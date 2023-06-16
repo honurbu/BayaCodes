@@ -8,9 +8,10 @@ namespace BAYA.Core.Entities
 {
     public class HelpCenter : BaseEntity
     {
+        public string? Name { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public float Truth { get; set; }
+        public float? Truth { get; set; }
 
 
 

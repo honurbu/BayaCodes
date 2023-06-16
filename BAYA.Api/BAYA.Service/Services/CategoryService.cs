@@ -19,6 +19,11 @@ namespace BAYA.Service.Services
         {
             _categoryRepository = categoryRepository;
         }
+
+        public async Task<List<Category>> GetCategoriesListWithSub()
+        {
+            return await _categoryRepository.GetCategoriesListWithSub();
+        }
     }
 }
 

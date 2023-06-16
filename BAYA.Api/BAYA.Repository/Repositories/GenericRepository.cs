@@ -24,6 +24,7 @@ namespace BAYA.Repository.Repositories
         public GenericRepository(AppDbContext context)
         {
             _context = context;
+            _dbSet= _context.Set<T>();
         }
 
         public async Task AddAsync(T entity)

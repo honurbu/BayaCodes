@@ -10,5 +10,7 @@ namespace BAYA.Core.Services
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        Task<List<Category>> GetCategoriesListWithSub();
+
     }
 }

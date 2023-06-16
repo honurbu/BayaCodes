@@ -15,5 +15,12 @@ namespace BAYA.Repository.Repositories
         public CategoryRepository(AppDbContext context) : base(context)
         {
         }
+
+        public async Task<List<Category>> GetCategoriesListWithSub()
+        {
+            return await _context.Categories
+                .ToListAsync();
+
+        }
     }
 }

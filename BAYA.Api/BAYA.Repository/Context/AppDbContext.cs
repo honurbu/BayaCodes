@@ -22,11 +22,8 @@ namespace BAYA.Repository.Context
         public DbSet<Debris> Debrises { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<HelpCenter> HelpCenters { get; set; }
-        public DbSet<Location> Locations { get; set; }
         public DbSet<Street> Streets { get; set; }
-        public DbSet<SubClothesCategory> SubClothesCategories { get; set; }
-        public DbSet<SubShelterCategory> SubShelterCategories { get; set; }
-        public DbSet<SubHealthCategory> SubHealthCategories { get; set; }
-        public DbSet<SubSupplyCategory> SubSupplyCategories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+   
     }
 }

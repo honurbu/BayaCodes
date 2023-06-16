@@ -12,8 +12,8 @@ namespace BAYA.Core.Entities
 
 
 
-        //Navigations
-        public int LocationId { get; set; }
-        public Location Locations { get; set; }
+        public int DistrictId { get; set; }
+        public District Districts { get; set; }
+
     }
 }

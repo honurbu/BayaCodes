@@ -13,10 +13,7 @@ namespace BAYA.Core.Entities
 
 
         //Navigations
-        public ICollection<SubClothesCategory> SubClothesCategories { get; set; }
-        public ICollection<SubHealthCategory> SubHealthCategories { get; set; }
-        public ICollection<SubShelterCategory> SubShelterCategories { get; set; }
-        public ICollection<SubSupplyCategory> SubSupplyCategories { get; set; }
+        public ICollection<SubCategory> SubCategories { get; set; }
 
     }
 }

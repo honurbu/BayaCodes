@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +13,7 @@ namespace BAYA.Core.Entities
 
 
 
-        //Navigations
-        public int LocationId { get; set; }
-        public Location Locations { get; set; }
+        public ICollection<District> Districts { get; set; }
+
     }
 }

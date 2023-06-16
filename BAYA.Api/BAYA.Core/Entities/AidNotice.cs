@@ -8,13 +8,15 @@ namespace BAYA.Core.Entities
 {
     public class AidNotice : BaseEntity
     {
-       
+
+        public string? Name { get; set; }
+
         //Navigations
         public int CategoryId { get; set; }
         public Category Categories { get; set; }  
         
         
-        public int LocationId { get; set; }
-        public Location Locations { get; set; }
+        public int CountyId { get; set; }
+        public County  Counties { get; set; }
     }
 }

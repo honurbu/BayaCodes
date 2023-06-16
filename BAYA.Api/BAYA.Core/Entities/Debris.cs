@@ -11,10 +11,5 @@ namespace BAYA.Core.Entities
 
 
 
-
-
-        //Navigations
-        public int LocationId { get; set; }
-        public Location Locations { get; set; }
     }
 }

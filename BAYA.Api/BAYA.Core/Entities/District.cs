@@ -12,8 +12,10 @@ namespace BAYA.Core.Entities
 
 
 
-        //Navigations
-        public int LocationId { get; set; }
-        public Location Locations { get; set; }
+        public ICollection<Street> Streets { get; set; }
+
+        public int CountyId { get; set; }
+        public County Counties { get; set; }
+
     }
 }
