@@ -27,5 +27,9 @@ namespace BAYA.Service.Services
             return await _helpCenterRepository.GetAllHelpCenters();
         }
 
+        public async Task<List<HelpCenter>> GetHelpCenterWithCategory(int id)
+        {
+            return await _helpCenterRepository.GetHelpCenterWithCategory(id);
+        }
     }
 }

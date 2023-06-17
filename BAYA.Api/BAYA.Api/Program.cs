@@ -26,8 +26,12 @@ builder.Services.AddScoped<IAidNoticeRepository, AidNoticeRepository>();
 builder.Services.AddScoped<IAidNoticeService, AidNoticeService>();
 builder.Services.AddScoped<ICountyRepository, CountyRepository>();
 builder.Services.AddScoped<ICountyService, CountyService>();
+
 builder.Services.AddScoped<IHelpCenterRepository, HelpCenterRepository>();
 builder.Services.AddScoped<IHelpCenterService, HelpCenterService>();
+
+builder.Services.AddScoped<IAdminsRepository, AdminsRepository>();
+builder.Services.AddScoped<IAdminsService, AdminsService>();
 
 builder.Services.AddScoped<IStreetService, StreetService>();
 builder.Services.AddScoped<IStreetRepository, StreetRepository>();

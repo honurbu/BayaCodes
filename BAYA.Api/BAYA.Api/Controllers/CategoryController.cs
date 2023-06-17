@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BAYA.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -25,5 +25,6 @@ namespace BAYA.Api.Controllers
             var values = await _categoryService.GetCategoriesListWithSub();
             return Ok(values);
         }
+
     }
 }

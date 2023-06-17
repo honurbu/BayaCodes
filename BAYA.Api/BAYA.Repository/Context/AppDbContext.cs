@@ -23,6 +23,7 @@ namespace BAYA.Repository.Context
         public DbSet<HelpCenter> HelpCenters { get; set; }
         public DbSet<Street> Streets { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Admins> Adminss { get; set; }
    
     }
 }

@@ -11,6 +11,6 @@ namespace BAYA.Core.Repositories
     public interface IHelpCenterRepository : IGenericRepository<HelpCenter>
     {
         Task<List<HelpCenter>> GetAllHelpCenters();
-
+        Task<List<HelpCenter>> GetHelpCenterWithCategory(int id);
     }
 }

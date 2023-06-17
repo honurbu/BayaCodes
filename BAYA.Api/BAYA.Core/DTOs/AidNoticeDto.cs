@@ -11,14 +11,13 @@ namespace BAYA.Core.DTOs
     {
 
         //Navigations
-        public int CategoryId { get; set; }
 
-        public int CountyId { get; set; }
-
-
-        public int DistrictId { get; set; }
+        public int? CountyId { get; set; }
 
 
-        public int StreetId { get; set; }
+        public int? DistrictId { get; set; }
+
+
+        public int? StreetId { get; set; }
     }
 }

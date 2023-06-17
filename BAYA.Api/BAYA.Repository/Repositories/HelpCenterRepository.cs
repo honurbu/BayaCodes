@@ -21,6 +21,10 @@ namespace BAYA.Repository.Repositories
             return await _context.HelpCenters.Include(x=>x.Categories).ToListAsync();
         }
 
- 
+        public async Task<List<HelpCenter>> GetHelpCenterWithCategory(int id)
+        {
+            return await _context.HelpCenters.Include(x => x.Categories).Where(x=>x.CategoryId == id).ToListAsync();
+
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace BAYA.Core.Services
     public interface IHelpCenterService : IGenericService<HelpCenter>
     {
         Task<List<HelpCenter>> GetAllHelpCenters();
+        Task<List<HelpCenter>> GetHelpCenterWithCategory(int id);
 
 
     }
