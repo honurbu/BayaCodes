@@ -12,8 +12,11 @@ namespace BAYA.Core.Entities
         public string CountyAddress { get; set; }
 
 
+        //public ICollection<District> Districts { get; set; }
 
-        public ICollection<District> Districts { get; set; }
+        public ICollection<AidNotice> AidNotices { get; set; }
+
+  
 
     }
 }

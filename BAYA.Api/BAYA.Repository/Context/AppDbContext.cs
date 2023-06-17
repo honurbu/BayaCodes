@@ -19,7 +19,6 @@ namespace BAYA.Repository.Context
         public DbSet<AidNotice> AidNotices { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<County> Counties { get; set; }
-        public DbSet<Debris> Debrises { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<HelpCenter> HelpCenters { get; set; }
         public DbSet<Street> Streets { get; set; }

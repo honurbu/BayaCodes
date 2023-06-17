@@ -13,7 +13,8 @@ namespace BAYA.Core.Entities
 
 
         //Navigations
-        public ICollection<SubCategory> SubCategories { get; set; }
+       // public ICollection<SubCategory> SubCategories { get; set; }
+        public ICollection<AidNotice> AidNotices { get; set; }
 
     }
 }

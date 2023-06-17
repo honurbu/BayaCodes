@@ -24,12 +24,12 @@ namespace BAYA.Api.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> GetAidNotices()
-        {
-            var values = await _aidNoticeService.GetAidNoticesListWithCategoryCounty();
-            return Ok(values);
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> GetAidNotices()
+        //{
+        //    var values = await _aidNoticeService.GetAidNoticesListWithCategoryCounty();
+        //    return Ok(values);
+        //}
 
 
 
@@ -37,7 +37,7 @@ namespace BAYA.Api.Controllers
         public async Task<IActionResult> GetListById(int categoryid, int countyid)
         {
             var values = await _aidNoticeService.GetAidNoticesById(categoryid, countyid);
-            return Ok(values);  
+            return Ok(values);
         }
 
 
@@ -78,6 +78,23 @@ namespace BAYA.Api.Controllers
             var values = await _aidNoticeService.GetByIdAsync(id);
             await _aidNoticeService.RemoveAsync(values);
             return Ok("Başarıyla silindi");
+        }
+
+
+        [HttpGet("{countyid}/{districtid}")]
+        public IActionResult Control(int countyid, int districtid)
+        {
+            var values = _aidNoticeService.GetCountWithCountyDistrict(countyid, districtid);
+            return Ok(values);
+        }
+
+
+
+        [HttpGet("{countyid}/{districtid}/{streetid}")]
+        public IActionResult Control(int countyid, int districtid, int streetid)
+        {
+            var values = _aidNoticeService.GetCountWithCountyDistrictStreet(countyid, districtid,streetid);
+            return Ok(values);
         }
     }
 }

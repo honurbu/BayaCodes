@@ -19,6 +19,7 @@ namespace BAYA.Service.Services
             _aidNoticeRepository = aidNoticeRepository;
         }
 
+   
         public async Task<List<AidNotice>> GetAidNoticesById(int categoryid, int countyid)
         {
             return await _aidNoticeRepository.GetAidNoticesById(categoryid, countyid);
@@ -34,14 +35,24 @@ namespace BAYA.Service.Services
             return await _aidNoticeRepository.GetAidNoticesListWithCategoryCounty(id);
         }
 
-        public  int GetCount(int categoryid)
+        public int GetCount(int categoryid)
         {
-            return  _aidNoticeRepository.GetCount(categoryid);
+            return _aidNoticeRepository.GetCount(categoryid);
         }
 
         public int GetCountyCount(int countyId)
         {
             return _aidNoticeRepository.GetCountyCount(countyId);
+        }
+
+        public int GetCountWithCountyDistrict(int countyId, int disticntid)
+        {
+            return _aidNoticeRepository.GetCountWithCountyDistrict(countyId, disticntid);
+        }
+
+        public int GetCountWithCountyDistrictStreet(int countyId, int disticntid, int streetid)
+        {
+            return _aidNoticeRepository.GetCountWithCountyDistrictStreet(countyId, disticntid, streetid);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BAYA.Core.Entities;
+﻿using BAYA.Core.DTOs;
+using BAYA.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace BAYA.Core.Repositories
 {
     public interface ICountyRepository : IGenericRepository<County>
     {
-
+       // Task<List<County>> GetCountyDto();
     }
 }

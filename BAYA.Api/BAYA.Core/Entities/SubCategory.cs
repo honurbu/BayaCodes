@@ -14,7 +14,7 @@ namespace BAYA.Core.Entities
 
 
         //Navigations
-        public int CategoryId { get; set; }
-        public Category Categories { get; set; }
+        //public int CategoryId { get; set; }
+        //public Category Categories { get; set; }
     }
 }

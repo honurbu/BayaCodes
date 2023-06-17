@@ -12,8 +12,7 @@ namespace BAYA.Core.Entities
 
 
 
-        public int DistrictId { get; set; }
-        public District Districts { get; set; }
+        public ICollection<AidNotice> AidNotices { get; set; }
 
     }
 }

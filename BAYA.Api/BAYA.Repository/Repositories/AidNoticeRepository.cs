@@ -16,23 +16,23 @@ namespace BAYA.Repository.Repositories
         {
         }
 
+
         public async Task<List<AidNotice>> GetAidNoticesById(int categoryid, int countyid)
         {
             return await _context.AidNotices
                 .Include(x => x.Categories)
                 .Include(x => x.Counties)
-                .ThenInclude(x => x.Districts)
-                .ThenInclude(x => x.Streets).Where(x => x.CategoryId == categoryid && x.CountyId == countyid).ToListAsync();
+                .Include(x=>x.Streets).Include(x=>x.Districts)
+                .Where(x => x.CategoryId == categoryid && x.CountyId == countyid).ToListAsync();
         }
 
         public async Task<List<AidNotice>> GetAidNoticesListWithCategoryCounty()
         {
             return await _context.AidNotices
                 .Include(x => x.Categories)
-                .ThenInclude(x=>x.SubCategories)
-                .Include(x => x.Counties)
-                .ThenInclude(x => x.Districts)
-                .ThenInclude(x => x.Streets).ToListAsync();
+                
+                .Include(x => x.Counties).Include(x => x.Streets).Include(x => x.Districts)
+                .ToListAsync();
 
         }
 
@@ -40,8 +40,8 @@ namespace BAYA.Repository.Repositories
         {
             return await _context.AidNotices
                 .Include(x => x.Categories)
-                .Include(x => x.Counties)
-                .Where(x=>x.Id==id)
+                .Include(x => x.Counties).Include(x => x.Streets).Include(x => x.Districts)
+                .Where(x => x.Id == id)
                 .ToListAsync();
         }
 
@@ -57,6 +57,15 @@ namespace BAYA.Repository.Repositories
             return _context.AidNotices.Include(x => x.Counties).Count(x => x.CountyId == countyId);
         }
 
+        public int GetCountWithCountyDistrict(int countyId, int disticntid)
+        {
+            return _context.AidNotices.Include(x => x.Counties).Include(x=>x.Districts).Count(x => x.CountyId == countyId && x.DistrictId == disticntid);
+        }
+
+        public int GetCountWithCountyDistrictStreet(int countyId, int disticntid, int streetid)
+        {
+            return _context.AidNotices.Include(x => x.Counties).Include(x => x.Districts).Include(x=>x.Streets).Count(x => x.CountyId == countyId && x.DistrictId == disticntid  && x.StreetId == streetid);
+        }
     }
 }
 

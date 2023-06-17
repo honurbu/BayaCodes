@@ -36,14 +36,26 @@ namespace BAYA.Repository.Migrations
                     b.Property<int>("CountyId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StreetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("CountyId");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("StreetId");
+
+                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("AidNotices");
                 });
@@ -82,19 +94,6 @@ namespace BAYA.Repository.Migrations
                     b.ToTable("Counties");
                 });
 
-            modelBuilder.Entity("BAYA.Core.Entities.Debris", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Debrises");
-                });
-
             modelBuilder.Entity("BAYA.Core.Entities.District", b =>
                 {
                     b.Property<int>("Id")
@@ -103,16 +102,11 @@ namespace BAYA.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CountyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("DistrictAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CountyId");
 
                     b.ToTable("Districts");
                 });
@@ -155,16 +149,11 @@ namespace BAYA.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DistrictId")
-                        .HasColumnType("int");
-
                     b.Property<string>("StreetAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DistrictId");
 
                     b.ToTable("Streets");
                 });
@@ -177,16 +166,11 @@ namespace BAYA.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("SubCategories");
                 });
@@ -194,31 +178,44 @@ namespace BAYA.Repository.Migrations
             modelBuilder.Entity("BAYA.Core.Entities.AidNotice", b =>
                 {
                     b.HasOne("BAYA.Core.Entities.Category", "Categories")
-                        .WithMany()
+                        .WithMany("AidNotices")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BAYA.Core.Entities.County", "Counties")
-                        .WithMany()
+                        .WithMany("AidNotices")
                         .HasForeignKey("CountyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BAYA.Core.Entities.District", "Districts")
+                        .WithMany("AidNotices")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BAYA.Core.Entities.Street", "Streets")
+                        .WithMany("AidNotices")
+                        .HasForeignKey("StreetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BAYA.Core.Entities.SubCategory", "SubCategories")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Categories");
 
                     b.Navigation("Counties");
-                });
 
-            modelBuilder.Entity("BAYA.Core.Entities.District", b =>
-                {
-                    b.HasOne("BAYA.Core.Entities.County", "Counties")
-                        .WithMany("Districts")
-                        .HasForeignKey("CountyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Districts");
 
-                    b.Navigation("Counties");
+                    b.Navigation("Streets");
+
+                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("BAYA.Core.Entities.HelpCenter", b =>
@@ -232,41 +229,24 @@ namespace BAYA.Repository.Migrations
                     b.Navigation("Categories");
                 });
 
-            modelBuilder.Entity("BAYA.Core.Entities.Street", b =>
-                {
-                    b.HasOne("BAYA.Core.Entities.District", "Districts")
-                        .WithMany("Streets")
-                        .HasForeignKey("DistrictId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Districts");
-                });
-
-            modelBuilder.Entity("BAYA.Core.Entities.SubCategory", b =>
-                {
-                    b.HasOne("BAYA.Core.Entities.Category", "Categories")
-                        .WithMany("SubCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categories");
-                });
-
             modelBuilder.Entity("BAYA.Core.Entities.Category", b =>
                 {
-                    b.Navigation("SubCategories");
+                    b.Navigation("AidNotices");
                 });
 
             modelBuilder.Entity("BAYA.Core.Entities.County", b =>
                 {
-                    b.Navigation("Districts");
+                    b.Navigation("AidNotices");
                 });
 
             modelBuilder.Entity("BAYA.Core.Entities.District", b =>
                 {
-                    b.Navigation("Streets");
+                    b.Navigation("AidNotices");
+                });
+
+            modelBuilder.Entity("BAYA.Core.Entities.Street", b =>
+                {
+                    b.Navigation("AidNotices");
                 });
 #pragma warning restore 612, 618
         }

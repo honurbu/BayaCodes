@@ -9,11 +9,16 @@ namespace BAYA.Core.DTOs
 {
     public class AidNoticeDto : BaseDto
     {
-        public string? Name { get; set; }
 
         //Navigations
         public int CategoryId { get; set; }
 
         public int CountyId { get; set; }
+
+
+        public int DistrictId { get; set; }
+
+
+        public int StreetId { get; set; }
     }
 }

@@ -16,5 +16,10 @@ namespace BAYA.Core.Repositories
         public int GetCount(int categoryid);
         public int GetCountyCount(int countyId);
 
+
+
+        public int GetCountWithCountyDistrict(int countyId,int disticntid);
+        public int GetCountWithCountyDistrictStreet(int countyId,int disticntid,int streetid);
+
     }
 }

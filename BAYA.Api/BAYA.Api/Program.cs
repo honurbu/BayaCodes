@@ -29,6 +29,11 @@ builder.Services.AddScoped<ICountyService, CountyService>();
 builder.Services.AddScoped<IHelpCenterRepository, HelpCenterRepository>();
 builder.Services.AddScoped<IHelpCenterService, HelpCenterService>();
 
+builder.Services.AddScoped<IStreetService, StreetService>();
+builder.Services.AddScoped<IStreetRepository, StreetRepository>();
+builder.Services.AddScoped<IDistrictService, DistrictService>();
+builder.Services.AddScoped<IDistrictRepository, DistrictRepository>();builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
+builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
 
 //Db created
 builder.Services.AddDbContext<AppDbContext>(x =>
@@ -47,6 +52,18 @@ builder.Services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSetting
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("BAYACors", opt =>
+    {
+        opt.AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,6 +74,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("BAYACors");
 
 app.UseAuthorization();
 

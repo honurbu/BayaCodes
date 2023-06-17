@@ -12,10 +12,14 @@ namespace BAYA.Core.Entities
 
 
 
-        public ICollection<Street> Streets { get; set; }
+        //public ICollection<Street> Streets { get; set; }
 
-        public int CountyId { get; set; }
-        public County Counties { get; set; }
+        //public int CountyId { get; set; }
+        //public County Counties { get; set; }
+       
+
+
+        public ICollection<AidNotice> AidNotices { get; set; }
 
     }
 }

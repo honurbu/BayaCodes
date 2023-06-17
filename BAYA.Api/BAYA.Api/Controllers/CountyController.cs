@@ -16,5 +16,14 @@ namespace BAYA.Api.Controllers
             _countyService = countyService;
         }
 
+
+        [HttpGet]
+
+        public async Task<IActionResult> CountyInfo()
+        {
+            var values = await _countyService.GetAllAsync();
+            return Ok(values);  
         }
+
+    }
 }
