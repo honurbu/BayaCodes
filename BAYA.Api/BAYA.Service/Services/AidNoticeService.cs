@@ -54,5 +54,10 @@ namespace BAYA.Service.Services
         {
             return _aidNoticeRepository.GetCountWithCountyDistrictStreet(countyId, disticntid, streetid);
         }
+
+        public void SaveRelatedRecord(string county, string district, string street, string? categoryname, string? subcategoryname)
+        {
+            _aidNoticeRepository.SaveRelatedRecord(county, district, street, categoryname, subcategoryname);
+        }
     }
 }

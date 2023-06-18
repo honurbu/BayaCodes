@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BAYA.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AdminsController : ControllerBase
     {

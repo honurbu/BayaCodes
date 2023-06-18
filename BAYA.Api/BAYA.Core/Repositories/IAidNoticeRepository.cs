@@ -21,5 +21,8 @@ namespace BAYA.Core.Repositories
         public int GetCountWithCountyDistrict(int countyId,int disticntid);
         public int GetCountWithCountyDistrictStreet(int countyId,int disticntid,int streetid);
 
+
+        public void SaveRelatedRecord(string county, string district, string street, string? categoryname, string? subcategoryname);
+
     }
 }
