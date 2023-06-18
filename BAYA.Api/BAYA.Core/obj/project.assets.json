@@ -3463,19 +3463,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Onur\\.nuget\\packages\\": {}
+    "C:\\Users\\sekii\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\BAYA.Api\\BAYA.Core\\BAYA.Core.csproj",
+      "projectUniqueName": "C:\\Users\\sekii\\Source\\Repos\\BayaCodes\\BAYA.Api\\BAYA.Core\\BAYA.Core.csproj",
       "projectName": "BAYA.Core",
-      "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\BAYA.Api\\BAYA.Core\\BAYA.Core.csproj",
-      "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\BAYA.Api\\BAYA.Core\\obj\\",
+      "projectPath": "C:\\Users\\sekii\\Source\\Repos\\BayaCodes\\BAYA.Api\\BAYA.Core\\BAYA.Core.csproj",
+      "packagesPath": "C:\\Users\\sekii\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sekii\\Source\\Repos\\BayaCodes\\BAYA.Api\\BAYA.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sekii\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3538,7 +3538,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

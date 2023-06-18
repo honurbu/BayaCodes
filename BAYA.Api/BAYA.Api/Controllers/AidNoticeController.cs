@@ -93,58 +93,13 @@ namespace BAYA.Api.Controllers
             return Ok(values);
         }
 
-        public class AddDTO
-        {
-            public string? county { get; set; }
-            public string? districts { get; set; }
-            public string? street { get; set; }
-
-            public string? categoryname { get; set; }
-
-            public string? subcategoryname { get; set; }
-        }
 
         [HttpPost]
         public IActionResult AddDataAitNotion([FromBody] AddDTO dto)
         {
-            SaveRelatedRecord(dto.county, dto.districts, dto.street, dto.categoryname, dto.subcategoryname);
+            _aidNoticeService.SaveRelatedRecord(dto.county,dto.districts,dto.street,dto.categoryname,dto.subcategoryname);
             return Ok("Success");
         }
-
-        [NonAction]
-        public void SaveRelatedRecord(string county, string district, string street, string? categoryname, string? subcategoryname)
-        {
-            try
-            {
-                // İlgili tabloyu ve string değerin kontrol edilmesi
-                var existCounty = _appDbContext.Counties.FirstOrDefault(r => r.CountyAddress == county);
-                var existngDistrict = _appDbContext.Districts.FirstOrDefault(r => r.DistrictAddress == district);
-                var existngStreet = _appDbContext.Streets.FirstOrDefault(r => r.StreetAddress == street);
-                var existingCategory = categoryname != null ? _appDbContext.Categories.FirstOrDefault(r => r.Name == categoryname) : null;
-                var existingSubcategory = subcategoryname != null ? _appDbContext.SubCategories.FirstOrDefault(r => r.Name == subcategoryname) : null;
-
-                // Var olan kayıt varsa ilişkili tabloya ID'yi kaydetme
-                var relatedRecord = new AidNotice
-                {
-                    CountyId = existCounty.Id,
-                    DistrictId = existngDistrict.Id,
-                    StreetId = existngStreet.Id,
-                    CategoryId = existingCategory != null ? existingCategory.Id : null,
-                    SubCategoryId = existingSubcategory != null ? existingSubcategory.Id : null
-                };
-
-                _appDbContext.AidNotices.Add(relatedRecord);
-                _appDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                // Hata ayrıntılarını yakala
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-        }
-
-
     }
 }
 

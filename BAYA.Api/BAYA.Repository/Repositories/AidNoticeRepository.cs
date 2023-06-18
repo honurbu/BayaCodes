@@ -66,6 +66,38 @@ namespace BAYA.Repository.Repositories
         {
             return _context.AidNotices.Include(x => x.Counties).Include(x => x.Districts).Include(x=>x.Streets).Count(x => x.CountyId == countyId && x.DistrictId == disticntid  && x.StreetId == streetid);
         }
+
+        public void SaveRelatedRecord(string county, string district, string street, string? categoryname, string? subcategoryname)
+        {
+            try
+            {
+                // İlgili tabloyu ve string değerin kontrol edilmesi
+                var existCounty = _context.Counties.FirstOrDefault(r => r.CountyAddress == county);
+                var existngDistrict = _context.Districts.FirstOrDefault(r => r.DistrictAddress == district);
+                var existngStreet = _context.Streets.FirstOrDefault(r => r.StreetAddress == street);
+                var existingCategory = categoryname != null ? _context.Categories.FirstOrDefault(r => r.Name == categoryname) : null;
+                var existingSubcategory = subcategoryname != null ? _context.SubCategories.FirstOrDefault(r => r.Name == subcategoryname) : null;
+
+                // Var olan kayıt varsa ilişkili tabloya ID'yi kaydetme
+                var relatedRecord = new AidNotice
+                {
+                    CountyId = existCounty.Id,
+                    DistrictId = existngDistrict.Id,
+                    StreetId = existngStreet.Id,
+                    CategoryId = existingCategory != null ? existingCategory.Id : null,
+                    SubCategoryId = existingSubcategory != null ? existingSubcategory.Id : null
+                };
+
+                _context.AidNotices.Add(relatedRecord);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // Hata ayrıntılarını yakala
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
     }
 }
 
